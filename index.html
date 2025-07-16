@@ -70,12 +70,17 @@
   <h2 style="margin-top: 50px;">💍 Surprise Message 💍</h2>
   <p style="font-size: 2em; color: #fff; background: rgba(0,0,0,0.3); display:inline-block; padding: 10px 20px; border-radius: 20px;">I will marry you baby</p>
 
-  <audio autoplay loop>
+  <audio id="bg-music" loop>
     <source src="snooze.mp3" type="audio/mpeg" />
     Your browser does not support audio.
   </audio>
 
   <script>
+    document.addEventListener('click', () => {
+      const music = document.getElementById('bg-music');
+      music.play();
+    }, { once: true });
+
     for (let i = 0; i < 30; i++) {
       const b = document.createElement("div");
       b.className = "bubble";
