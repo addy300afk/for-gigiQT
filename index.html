@@ -6,13 +6,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Happy Birthday Gigi 💙</title>
   <style>
-    body {
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
       font-family: 'Comic Sans MS', cursive;
       background: linear-gradient(to bottom, #a8e0ff, #70cad1, #3e8e9e);
       color: white;
       text-align: center;
       overflow-x: hidden;
+    }
+    #overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: #04293A;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 10;
+      transition: opacity 1s ease;
+    }
+    #overlay h1 {
+      font-size: 1.8em;
+      margin: 20px;
+      padding: 30px;
+    }
+    #main-content {
+      display: none;
+      animation: fadeIn 2s ease forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
     h1 {
       font-size: 3em;
@@ -51,6 +81,12 @@
   </style>
 </head>
 <body>
+
+<div id="overlay" onclick="startExperience()">
+  <h1>Tap to play the song Aman thinks about you when it plays 💙</h1>
+</div>
+
+<div id="main-content">
   <h1>Happy Birthday Gigi 💙</h1>
 
   <div class="letter">
@@ -69,17 +105,18 @@
 
   <h2 style="margin-top: 50px;">💍 Surprise Message 💍</h2>
   <p style="font-size: 2em; color: #fff; background: rgba(0,0,0,0.3); display:inline-block; padding: 10px 20px; border-radius: 20px;">I will marry you baby</p>
+</div>
 
-  <audio id="bg-music" loop>
-    <source src="snooze.mp3" type="audio/mpeg" />
-    Your browser does not support audio.
-  </audio>
+<audio id="bg-music" loop>
+  <source src="snooze.mp3" type="audio/mpeg" />
+  Your browser does not support audio.
+</audio>
 
-  <script>
-    document.addEventListener('click', () => {
-      const music = document.getElementById('bg-music');
-      music.play();
-    }, { once: true });
+<script>
+  function startExperience() {
+    document.getElementById("overlay").style.display = "none";
+    document.getElementById("main-content").style.display = "block";
+    document.getElementById("bg-music").play();
 
     for (let i = 0; i < 30; i++) {
       const b = document.createElement("div");
@@ -90,6 +127,8 @@
       b.style.animationDuration = `${Math.random() * 10 + 5}s`;
       document.body.appendChild(b);
     }
-  </script>
+  }
+</script>
+
 </body>
 </html>
