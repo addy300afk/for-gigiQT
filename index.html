@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Gigi 💙</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive;
+      background: linear-gradient(to bottom, #a8e0ff, #70cad1, #3e8e9e);
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+    }
+    h1 {
+      font-size: 3em;
+      margin-top: 20px;
+    }
+    .letter {
+      padding: 20px;
+      font-size: 1.3em;
+      max-width: 800px;
+      margin: auto;
+      background: rgba(0,0,0,0.3);
+      border-radius: 20px;
+    }
+    .photos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 30px;
+      gap: 15px;
+    }
+    .photos img {
+      width: 250px;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .bubble {
+      position: absolute;
+      background: rgba(255,255,255,0.5);
+      border-radius: 50%;
+      animation: floatUp 10s infinite;
+    }
+    @keyframes floatUp {
+      from { transform: translateY(100vh); }
+      to { transform: translateY(-200px); }
+    }
+  </style>
+</head>
+<body>
+  <h1>Happy Birthday Gigi 💙</h1>
+
+  <div class="letter">
+    <p>Gigi Lohiya, I am so glad to have you in my life. You are the best thing that has happened to me! You make me feel loved, wanted. Your efforts mean so much.</p>
+    <p>At this rate, I believe we will survive this phase and what’s to come next is really beautiful. I love your giggles, your voice, and being loved by you.</p>
+    <p>I’ll never leave your side baby. I am always in your corner.</p>
+    <p><strong>I LOVE YOU VERY MUCH</strong></p>
+    <p>Yours lovingly,<br>Aman Lohiya</p>
+  </div>
+
+  <h2 style="margin-top: 40px;">📸 Some of Us 💕</h2>
+  <div class="photos">
+    <img src="us e and her.png" alt="Us baby pic">
+    <img src="us 222.png" alt="Us modern pic">
+  </div>
+
+  <h2 style="margin-top: 50px;">💍 Surprise Message 💍</h2>
+  <p style="font-size: 2em; color: #fff; background: rgba(0,0,0,0.3); display:inline-block; padding: 10px 20px; border-radius: 20px;">I will marry you baby</p>
+
+  <audio autoplay loop>
+    <source src="snooze.mp3" type="audio/mpeg" />
+    Your browser does not support audio.
+  </audio>
+
+  <script>
+    for (let i = 0; i < 30; i++) {
+      const b = document.createElement("div");
+      b.className = "bubble";
+      b.style.width = b.style.height = `${Math.random() * 30 + 10}px`;
+      b.style.left = `${Math.random() * 100}vw`;
+      b.style.top = `${Math.random() * 100}vh`;
+      b.style.animationDuration = `${Math.random() * 10 + 5}s`;
+      document.body.appendChild(b);
+    }
+  </script>
+</body>
+</html>
