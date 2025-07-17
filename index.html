@@ -1,134 +1,117 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Happy Birthday Gigi 💙</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Comic Sans MS', cursive;
-      background: linear-gradient(to bottom, #a8e0ff, #70cad1, #3e8e9e);
-      color: white;
-      text-align: center;
-      overflow-x: hidden;
-    }
-    #overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background: #04293A;
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      z-index: 10;
-      transition: opacity 1s ease;
-    }
-    #overlay h1 {
-      font-size: 1.8em;
-      margin: 20px;
-      padding: 30px;
-    }
-    #main-content {
-      display: none;
-      animation: fadeIn 2s ease forwards;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    h1 {
-      font-size: 3em;
-      margin-top: 20px;
-    }
-    .letter {
-      padding: 20px;
-      font-size: 1.3em;
-      max-width: 800px;
-      margin: auto;
-      background: rgba(0,0,0,0.3);
-      border-radius: 20px;
-    }
-    .photos {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 30px;
-      gap: 15px;
-    }
-    .photos img {
-      width: 250px;
-      border-radius: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }
-    .bubble {
-      position: absolute;
-      background: rgba(255,255,255,0.5);
-      border-radius: 50%;
-      animation: floatUp 10s infinite;
-    }
-    @keyframes floatUp {
-      from { transform: translateY(100vh); }
-      to { transform: translateY(-200px); }
-    }
-  </style>
+  <title>Happy Birthday Gigi</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-<div id="overlay" onclick="startExperience()">
-  <h1>Tap to play the song Aman thinks about you when it plays 💙</h1>
-</div>
-
-<div id="main-content">
-  <h1>Happy Birthday Gigi 💙</h1>
-
-  <div class="letter">
-    <p>Gigi Lohiya, I am so glad to have you in my life. You are the best thing that has happened to me! You make me feel loved, wanted. Your efforts mean so much.</p>
-    <p>At this rate, I believe we will survive this phase and what’s to come next is really beautiful. I love your giggles, your voice, and being loved by you.</p>
-    <p>I’ll never leave your side baby. I am always in your corner.</p>
-    <p><strong>I LOVE YOU VERY MUCH</strong></p>
-    <p>Yours lovingly,<br>Aman Lohiya</p>
+  <div id="intro" class="screen">
+    <h1>Tap to play the song Aman thinks about you when it plays 💖</h1>
+    <button id="playButton">Play</button>
   </div>
 
-  <h2 style="margin-top: 40px;">📸 Some of Us 💕</h2>
-  <div class="photos">
-    <img src="us e and her.png" alt="Us baby pic">
-    <img src="us 222.png" alt="Us modern pic">
+  <div id="mainContent" class="hidden">
+    <audio id="bgMusic" src="snooze.mp3" loop></audio>
+
+    <section class="hero">
+      <h1>Happy Birthday Gigi 💕</h1>
+      <p>From your Aman 🫶</p>
+    </section>
+
+    <section class="love-letter">
+      <h2>My Love Letter to You</h2>
+      <p>
+        Gigi Lohiya, I am so glad to have you in my life. You are the best thing that has happened to me! I love your giggles, your voice, the comfort I feel around you. I love loving you, and being loved by you.
+        <br><br>
+        I LOVE YOU VERY MUCH. ❤️<br>
+        Yours lovingly,<br>
+        Aman Lohiya
+      </p>
+    </section>
+
+    <section class="photos">
+      <img src="us e and her.png" alt="Us 1" />
+      <img src="us 222.png" alt="Us 2" />
+    </section>
+
+    <section class="surprise">
+      <button onclick="revealMessage()">Tap here for a surprise 💍</button>
+      <p id="secretMessage" class="hidden">I will marry you baby 💖</p>
+    </section>
+
+    <section class="counters">
+      <div id="loveCounter">❤️ Love Counter: <span id="loveCount">0</span></div>
+      <div id="countdown">⏳ Countdown to Forever: <span id="timer"></span></div>
+    </section>
+
+    <section class="game" id="game1">
+      <h2>Catch the Hearts 💘</h2>
+      <div id="heartGameArea"></div>
+      <button onclick="startHeartGame()">Start Game</button>
+      <p id="heartGameResult"></p>
+    </section>
+
+    <section class="game" id="game2">
+      <h2>Find Aman's Love Notes 💌</h2>
+      <div id="loveNotesArea"></div>
+    </section>
+
+    <section class="game" id="game3">
+      <h2>Puzzle Us Together 🧩</h2>
+      <p>Imagine a puzzle photo of us coming soon here 😉</p>
+    </section>
+
+    <section class="quiz">
+      <h2>Romantic Quiz 💞</h2>
+
+      <div class="question">
+        <p>Who said I love you first?</p>
+        <button onclick="checkAnswer(this, 'Gigi', 'Gigi')">Aman</button>
+        <button onclick="checkAnswer(this, 'Gigi', 'Gigi')">Gigi</button>
+      </div>
+
+      <div class="question">
+        <p>What do I like the most about you?</p>
+        <button onclick="checkAnswer(this, 'All of the above baby I love them all to the max', 'All of the above baby I love them all to the max')">Your smile</button>
+        <button onclick="checkAnswer(this, 'All of the above baby I love them all to the max', 'All of the above baby I love them all to the max')">Your giggles</button>
+        <button onclick="checkAnswer(this, 'All of the above baby I love them all to the max', 'All of the above baby I love them all to the max')">Your face</button>
+        <button onclick="checkAnswer(this, 'All of the above baby I love them all to the max', 'All of the above baby I love them all to the max')">Your voice</button>
+      </div>
+
+      <div class="question">
+        <p>What do you love about me the most? (Write anything)</p>
+        <input type="text" id="loveInput" placeholder="Type here...">
+        <button onclick="saveAnswer('loveInput')">Submit</button>
+      </div>
+
+      <div class="question">
+        <p>What do you think we should work on to make this relationship better?</p>
+        <input type="text" id="improveInput" placeholder="Type here...">
+        <button onclick="saveAnswer('improveInput')">Submit</button>
+      </div>
+
+      <div class="question">
+        <p>Who is the best couple?</p>
+        <img src="us e and her.png" width="150" />
+        <img src="romi julie.jpg" width="150" />
+        <br />
+        <button onclick="showResult()">Gigi and Aman</button>
+        <button onclick="showResult()">Romeo and Juliet</button>
+        <p id="coupleResult" class="hidden">It's obviously Us baby — Gigi and Aman all the way 💞</p>
+      </div>
+    </section>
+
+    <section class="final-note">
+      <p>
+        This is a note after the arguments and problems we have been having. Look I don't like them, I don't wanna be mean to you and I def don't wanna hurt you. I want you to understand that I'll do anything for you — but do you have the same for me? If you do, I need you to make me feel wanted, cuz when you don't, I lose my desire to be in this relationship, which I don't want.
+        <br><br>
+        You have made tons of mistakes and I am willing to overlook them all, just don't make me regret this. I love you baby, please let me love you forever, please keep being my sweet sweet girl.
+      </p>
+    </section>
   </div>
 
-  <h2 style="margin-top: 50px;">💍 Surprise Message 💍</h2>
-  <p style="font-size: 2em; color: #fff; background: rgba(0,0,0,0.3); display:inline-block; padding: 10px 20px; border-radius: 20px;">I will marry you baby</p>
-</div>
-
-<audio id="bg-music" loop>
-  <source src="snooze.mp3" type="audio/mpeg" />
-  Your browser does not support audio.
-</audio>
-
-<script>
-  function startExperience() {
-    document.getElementById("overlay").style.display = "none";
-    document.getElementById("main-content").style.display = "block";
-    document.getElementById("bg-music").play();
-
-    for (let i = 0; i < 30; i++) {
-      const b = document.createElement("div");
-      b.className = "bubble";
-      b.style.width = b.style.height = `${Math.random() * 30 + 10}px`;
-      b.style.left = `${Math.random() * 100}vw`;
-      b.style.top = `${Math.random() * 100}vh`;
-      b.style.animationDuration = `${Math.random() * 10 + 5}s`;
-      document.body.appendChild(b);
-    }
-  }
-</script>
-
+  <script src="script.js"></script>
 </body>
 </html>
